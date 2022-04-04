@@ -4,7 +4,25 @@ import { Button, View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 const HomeScreen = ({navigation, route}) => {
   console.log(route);
     return (
-      <View style={styles.mainView}>
+      <View style={styles.mainView}
+      onStartShouldSetResponder={()=>{
+        console.log("u're clicking the mainView");
+        return true;
+      }}
+      onResponderGrant={() => {
+        console.log("mainView granted response");
+      }}
+      onResponderRelease={() => {
+        console.log("mainView release response");
+      }}
+      onMoveShouldSetResponder={()=>{
+        console.log("u're moving ur finger in mainView");
+        return true;
+      }}
+      onResponderMove={() => {
+        console.log("mainView moved response");
+      }}
+      >
         <Text>Home Screen</Text>
           <TouchableOpacity
             style={styles.touchableView}
