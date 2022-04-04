@@ -1,11 +1,16 @@
 import React from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
+import { PanGestureHandler } from 'react-native-gesture-handler';
 
 const DetailsScreen = ({navigation, route}) => {
   console.log(route);
   const {from} = route.params;
   const {screenNumber} = route.params;
     return (
+      <PanGestureHandler
+      onGestureEvent={(gestureEvent) => {
+      console.log("u're moving ur finger in mainView using gesture handler");
+      }}>
       <View style={styles.mainView}>
         <Text>I came from {from}</Text>
         <Text>Details Screen</Text>
@@ -23,6 +28,7 @@ const DetailsScreen = ({navigation, route}) => {
             title="Go Back Home"
             onPress={() => {navigation.popToTop()}}/>
       </View>
+      </PanGestureHandler>
     )
 };
 
